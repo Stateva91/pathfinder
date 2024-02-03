@@ -38,6 +38,8 @@ public class Route {
     @OneToMany(targetEntity = Comment.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
+    @OneToOne
+    private Picture header;
     public Route(){
         this.comments=new HashSet<>();
     }
