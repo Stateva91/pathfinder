@@ -2,28 +2,30 @@ package com.example.pathfinder.model;
 
 import jakarta.persistence.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "messages")
-public class Message {
+@Table(name = "comments")
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "date_time", nullable = false)
-    private LocalDateTime dateTime;
+    private boolean approved;
 
-    @Column(columnDefinition = "TEXT")
+    private LocalDateTime created;
+
+    @Lob
     private String text;
 
     @ManyToOne
     private User author;
 
     @ManyToOne
-    private User recipient;
+    private Route route;
+
+    public Comment(){}
 
     public long getId() {
         return id;
@@ -33,12 +35,20 @@ public class Message {
         this.id = id;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public boolean isApproved() {
+        return approved;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     public String getText() {
@@ -57,11 +67,11 @@ public class Message {
         this.author = author;
     }
 
-    public User getRecipient() {
-        return recipient;
+    public Route getRoute() {
+        return route;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }
