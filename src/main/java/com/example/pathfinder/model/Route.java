@@ -49,7 +49,7 @@ public class Route {
         this.pictures = pictures;
     }
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
     private Set<Picture> pictures;
     public Route(){
         this.comments=new HashSet<>();
