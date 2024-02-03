@@ -38,11 +38,32 @@ public class Route {
     @OneToMany(targetEntity = Comment.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
+    public Picture getHeader() {
+        return header;
+    }
+
+    public void setHeader(Picture header) {
+        this.header = header;
+    }
+
     @OneToOne
     private Picture header;
     public Route(){
         this.comments=new HashSet<>();
+        this.categories=new HashSet<>();
     }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    @ManyToMany
+    private Set<Category> categories;
+
 
     public long getId() {
         return id;
