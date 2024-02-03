@@ -4,13 +4,14 @@ import com.example.pathfinder.model.enums.RouteCategory;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="gategories")
+@Table(name="categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, unique = true)
+    @Enumerated(EnumType.STRING)
     private RouteCategory name;
 
     @Column(columnDefinition = "TEXT")

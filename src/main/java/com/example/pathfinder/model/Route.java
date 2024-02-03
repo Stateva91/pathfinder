@@ -22,6 +22,9 @@ public class Route {
 
     private String name;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     @ManyToOne
     private User author;
 
@@ -38,16 +41,16 @@ public class Route {
     @OneToMany(targetEntity = Comment.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
-    public Picture getHeader() {
-        return header;
+    public Set<Picture> getPictures() {
+        return pictures;
     }
 
-    public void setHeader(Picture header) {
-        this.header = header;
+    public void setPictures(Picture header) {
+        this.pictures = pictures;
     }
 
-    @OneToOne
-    private Picture header;
+    @OneToMany(mappedBy = "route")
+    private Set<Picture> pictures;
     public Route(){
         this.comments=new HashSet<>();
         this.categories=new HashSet<>();
