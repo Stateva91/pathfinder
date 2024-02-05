@@ -14,15 +14,16 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    action="/"
-                    method="">
+                  th:action="@{/register}"
+                  th:method="POST">
+                  th:object="${userRegistrationDTO}"
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input name="username"
-                               
+                               th:field="*{username}"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
