@@ -1,6 +1,7 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.dto.UserRegistrationDTO;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class AuthController {
       return "register";
     }
     @PostMapping ("/register")
-    public String doRegister(UserRegistrationDTO userREgistrationDTO){
+    public String doRegister(@Valid UserRegistrationDTO userREgistrationDTO){
         System.out.println(userREgistrationDTO.toString());
 
         return "redirect:/login";
