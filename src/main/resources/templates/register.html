@@ -24,11 +24,12 @@
                     <div class="col-auto">
                         <input name="username"
                                th:field="*{username}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
                                class="form-control"
-                               aria-describedby="usernameHelpInline">
+                               aria-describedby="usernameHelpInline"/>
                         <small id="usernameError"
                                class="invalid-feedback bg-danger rounded">Username length must be more than 3 characters</small>
 
@@ -45,6 +46,7 @@
                     <div class="col-auto">
                         <input name="fullname"
                                th:field="*{fullname}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputFullName"

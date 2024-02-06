@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 
 public class UserRegistrationDTO {
 
-    @NotNull
+    @NotBlank
     @Size(min=5, max = 20)
     private String username;
 

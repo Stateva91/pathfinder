@@ -6,11 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthController {
+
+    @ModelAttribute("userRegistrationDTO")
+    public UserRegistrationDTO initForm(){
+      return new UserRegistrationDTO();
+    }
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("userRegistrationDTO", new UserRegistrationDTO());
@@ -29,6 +35,9 @@ public class AuthController {
             return "redirect:/register";
 
         }
+        //check if passwords match
+        //check if username/email is used
+
         //insert in db
         return "redirect:/login";
     }
